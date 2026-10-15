@@ -2,3 +2,22 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+.top{
+    display: flex;
+}
+
+#color-scheme{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+
+.col-1,.col-2,.col-3,.col-4,.col-5{
+    height: 200px;
+}
+
+.col-1{background-color: green;}
+.col-2{background-color: blue;}
+.col-3{background-color: yellow;}
+.col-4{background-color: purple;}
+.col-5{background-color: red;}

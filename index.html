@@ -1,9 +1,24 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <h1>index.html</h1>
+        <form class="top">
+            <input id="color-picker" type="color">
+            <select name="palette">
+                <option value="">Monochrome</option>
+                <option value="">Monochrome-dark</option>
+                <option value="">Monochrome-light</option>
+                <option value="">Analogic</option>
+                <option value="">Complement</option>
+                <option value="">Analogic-complement</option>
+                <option value="">Triad</option>
+            </select>
+            <button id="get-btn">Get color scheme</button>
+        </form>
+        <div id="color-scheme">
+        </div>
         <script src="index.js"></script>
     </body>
 </html>
