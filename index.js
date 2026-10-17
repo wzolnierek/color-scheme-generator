@@ -1,26 +1,40 @@
-const colorPicker = document.getElementById("color-picker").value.slice(1)
 const colorScheme = document.getElementById("color-scheme")
-const getBtn = document.getElementById("get-btn")
+let colorPicker = document.getElementById("color-picker").value.slice(1)
+let palettePicker = document.getElementById("palette-picker").value
 
+const getBtn = document.getElementById("get-btn")
+let col = 5
 
 function renderColors(col){
     let html = ""
     for(let i=0; i < col; i++){
-        html += `<div class=col-${i+1}></div>`
-    }
-    for(let i=0; i < col; i++){
-        html += `<p>${(i+1)*100000}</p>`
+        html += `<div id=col${i}></div>`
     }
     
+    
+    
+    fetch(`https://www.thecolorapi.com/scheme?hex=${colorPicker}&mode=${palettePicker}&count=${col}`)
+    .then(x => x.json())
+    .then( data => {
+        for(let i=0; i < col; i++){
+            html += `<p>${test}</p>`
+        }
+    })
+    .then(
+        function(data){
+            for(let i=0; i<col; i++){
+                document.getElementById(`col${i}`).style.backgroundColor = `${data.colors[i].hex.value}`
+            }
+        }
+    )
+
     colorScheme.innerHTML = html
 }
-
 getBtn.addEventListener("click", function(e){
     e.preventDefault()
-    renderColors(5)
-    console.log(colorPicker)
-    fetch(`https://www.thecolorapi.com/scheme?hex=${colorPicker}&mode=analogic&count=5`)
-        .then(x => x.json())
-        .then(data => console.log(data))
+    colorPicker = document.getElementById("color-picker").value.slice(1)
+    palettePicker = document.getElementById("palette-picker").value
+
+    renderColors(col)
 })
 

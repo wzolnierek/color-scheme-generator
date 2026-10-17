@@ -10,14 +10,15 @@ html, body {
 #color-scheme{
     display: grid;
     grid-template-columns: repeat(5,1fr);
+    height: 800px;
 }
 
-.col-1,.col-2,.col-3,.col-4,.col-5{
+/* #col1,#col2,#col3,#col4,#col5{
     height: 200px;
-}
+} */
 
-.col-1{background-color: green;}
-.col-2{background-color: blue;}
-.col-3{background-color: yellow;}
-.col-4{background-color: purple;}
-.col-5{background-color: red;}
+/* #col1{background-color: green;}
+#col2{background-color: blue;}
+#col3{background-color: yellow;}
+#col4{background-color: purple;}
+#col0{background-color: red;} */
