@@ -1,40 +1,34 @@
-const colorScheme = document.getElementById("color-scheme")
-let colorPicker = document.getElementById("color-picker").value.slice(1)
-let palettePicker = document.getElementById("palette-picker").value
-
+const paletteContainer = document.getElementById("palette-container")
+const colorInput = document.getElementById("color-picker")
+const modeInput = document.getElementById("mode-picker")
 const getBtn = document.getElementById("get-btn")
-let col = 5
 
-function renderColors(col){
-    let html = ""
-    for(let i=0; i < col; i++){
-        html += `<div id=col${i}></div>`
-    }
-    
-    
-    
-    fetch(`https://www.thecolorapi.com/scheme?hex=${colorPicker}&mode=${palettePicker}&count=${col}`)
-    .then(x => x.json())
-    .then( data => {
-        for(let i=0; i < col; i++){
-            html += `<p>${test}</p>`
-        }
-    })
-    .then(
-        function(data){
-            for(let i=0; i<col; i++){
-                document.getElementById(`col${i}`).style.backgroundColor = `${data.colors[i].hex.value}`
-            }
-        }
-    )
+const COLOR_COUNT = 7
 
-    colorScheme.innerHTML = html
+function fetchScheme(hex,mode,count){
+    return fetch(`https://www.thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=${count}`)
+        .then(x => x.json())
+        .then(data => data.colors.map(color => color.hex.value))
 }
+
+function renderColors(colors){
+    const palette = colors.map(hex => `<div style="background-color:${hex}"></div><p>${hex}</p>`).join("")
+    // const hexValue = colors.map(hex => `<p>${hex}</p>`).join("")
+
+    paletteContainer.innerHTML = palette
+}
+
+function getScheme(){
+    const hex = colorInput.value.slice(1)
+    const mode = modeInput.value
+
+    fetchScheme(hex,mode,COLOR_COUNT)
+        .then(colors => renderColors(colors))   
+}
+
 getBtn.addEventListener("click", function(e){
     e.preventDefault()
-    colorPicker = document.getElementById("color-picker").value.slice(1)
-    palettePicker = document.getElementById("palette-picker").value
-
-    renderColors(col)
+    getScheme()
 })
 
+getScheme()
