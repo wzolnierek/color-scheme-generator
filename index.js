@@ -3,7 +3,7 @@ const colorInput = document.getElementById("color-picker")
 const modeInput = document.getElementById("mode-picker")
 const getBtn = document.getElementById("get-btn")
 
-const COLOR_COUNT = 7
+const COLOR_COUNT = 5
 
 function fetchScheme(hex,mode,count){
     return fetch(`https://www.thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=${count}`)
@@ -12,8 +12,7 @@ function fetchScheme(hex,mode,count){
 }
 
 function renderColors(colors){
-    const palette = colors.map(hex => `<div style="background-color:${hex}"></div><p>${hex}</p>`).join("")
-    // const hexValue = colors.map(hex => `<p>${hex}</p>`).join("")
+    const palette = colors.map((hex, i) => `<div style="background-color:${hex}"></div><p id="hex-${i}">${hex}</p>`).join("")
 
     paletteContainer.innerHTML = palette
 }
@@ -32,3 +31,10 @@ getBtn.addEventListener("click", function(e){
 })
 
 getScheme()
+
+paletteContainer.addEventListener('click', function(e){
+    if (e.target.tagName=="P"){
+        navigator.clipboard.writeText(e.target.innerText);
+        alert("Copied the hex: " + e.target.innerText)
+    }
+})

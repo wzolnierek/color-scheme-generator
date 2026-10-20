@@ -1,17 +1,62 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-family: "Inter", sans-serif;
 }
 
 .top{
     display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 10px;
+
+    padding: 30px 20px;
 }
+
+#color-picker{
+    cursor: pointer;
+    border: 2px solid #D1D5DB;
+    width: 80px;
+    height: 100%;
+}
+
+#mode-picker, #get-btn{
+    cursor: pointer;
+    border: solid 1px #D1D5DB;
+    border-radius: 5px;
+    height: 100%;
+    font-family: "Inter", sans-serif;
+    padding: 15px 10px; 
+    background-color: white;
+}
+
+#mode-picker{
+    font-size: 18px;
+}
+
+#mode-picker:hover, #get-btn:hover,#mode-picker:focus, #get-btn:focus{
+    background-color: rgb(216, 216, 216);
+}
+
 
 #palette-container{
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     grid-template-rows: 1fr auto;
-    height: 800px;
     text-align: center;
+    flex: 1;
+}
+
+.app-wrapper{
+    max-width: 100%;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+p{
+    padding: 10px;
+    cursor: pointer;
 }
