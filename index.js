@@ -1,9 +1,8 @@
 const paletteContainer = document.getElementById("palette-container")
 const colorInput = document.getElementById("color-picker")
 const modeInput = document.getElementById("mode-picker")
+const nrInput = document.getElementById("nr-input")
 const getBtn = document.getElementById("get-btn")
-
-const COLOR_COUNT = 5
 
 function fetchScheme(hex,mode,count){
     return fetch(`https://www.thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=${count}`)
@@ -20,8 +19,9 @@ function renderColors(colors){
 function getScheme(){
     const hex = colorInput.value.slice(1)
     const mode = modeInput.value
+    const count = nrInput.value
 
-    fetchScheme(hex,mode,COLOR_COUNT)
+    fetchScheme(hex,mode,count)
         .then(colors => renderColors(colors))   
 }
 

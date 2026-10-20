@@ -10,7 +10,7 @@
         <div class="app-wrapper">
             <div class="top">
                 <input id="color-picker" type="color" value="#3b82f6">
-                <select id="mode-picker" name="palette">
+                <select id="mode-picker" class="input" name="palette">
                     <option value="monochrome">Monochrome</option>
                     <option value="monochrome-dark">Monochrome-dark</option>
                     <option value="monochrome-light">Monochrome-light</option>
@@ -19,7 +19,8 @@
                     <option value="analogic-complement">Analogic-complement</option>
                     <option value="triad">Triad</option>
                 </select>
-                <button id="get-btn">Get color scheme</button>
+                <input type="number" id="nr-input" class="input" min="3" max="7" value="5">
+                <button id="get-btn" class="input">Get color scheme</button>
             </div>
             <div id="palette-container">
             </div>
